@@ -8,18 +8,18 @@ var InformationBlock = React.createClass({
     }
   });
 
-  var InformationBlockMobile = React.createClass({
-    render: function() {
-        return(
-          <div id={this.props.id}>
-          [accordion]
-            <h3>{this.props.title}</h3>
-            {this.props.text}
-          [/accordion]                
-          </div>
-          );           
-    }
-  });
+      var InformationBlockMobile = React.createClass({
+        render: function() {
+            return(
+              <div id={this.props.id}>
+              <span dangerouslySetInnerHTML={{__html: '[accordion]'}} />
+                <h3>{this.props.title}</h3>
+                {this.props.text}
+              <span dangerouslySetInnerHTML={{__html: '[/accordion]'}} />               
+              </div>
+              );           
+        }
+      });
 
   var InformationContainer = React.createClass({
     render:function(){
