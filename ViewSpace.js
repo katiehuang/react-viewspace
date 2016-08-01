@@ -8,45 +8,21 @@ var InformationBlock = React.createClass({
     }
   });
 
-    var InformationBlockMobile = React.createClass({
-      render: function() {
-        function createMarkup(){
-          return(
-            {__html: '[accordion]'}
-            <h3>{this.props.title}</h3>
-              {this.props.text}
-              {__html: '[/accordion]'}
-            );
-        };
-          return(
-            <div id={this.props.id} dangerouslySetInnerHTML={createMarkup()} /></div>
-            );           
-      }
-    });
-
   var InformationContainer = React.createClass({
     render:function(){
       var rows = [];
       var lastBlock = null;
-      if(!this.props.mobile){
-          this.props.blocks.forEach(function(block){
-            if(block !== lastBlock){
-              rows.push(<InformationBlock id={block.id} title={block.title} text={block.text}/>);
-            }
-            lastBlock = block;
-          }
-          )            
-      }
-      else{
-        this.props.blocks.forEach(function(block){
-          if(block !== lastBlock){
-            rows.push(<InformationBlockMobile id={block.id} title={block.title} text={block.text}/>);
-          }
-          lastBlock = block;
+      this.props.blocks.forEach(function(block){
+        if(block !== lastBlock){
+          rows.push(<InformationBlock id={block.id} title={block.title} text={block.text}/>);
         }
-        ) 
+        lastBlock = block;
       }
-      return(<div>{rows}</div>);
+      )            
+    if(this.props.mobile)
+      return(<div id='accordion'>{rows}</div>);
+    else
+      return(<div>{rows}</div);
     }
   });
 
