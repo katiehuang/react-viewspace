@@ -22,7 +22,7 @@ var InformationBlock = React.createClass({
     if(this.props.mobile)
       return(<div id='accordion'>{rows}</div>);
     else
-      return(<div>{rows}</div);
+      return(<div>{rows}</div>);
     }
   });
 
