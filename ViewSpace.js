@@ -11,12 +11,12 @@ var InformationBlock = React.createClass({
     var InformationBlockMobile = React.createClass({
       render: function() {
         function createMarkup(){
-          return{
+          return(
             {__html: '[accordion]'}
             <h3>{this.props.title}</h3>
               {this.props.text}
               {__html: '[/accordion]'}
-            };
+            );
         };
           return(
             <div id={this.props.id} dangerouslySetInnerHTML={createMarkup()} /></div>
