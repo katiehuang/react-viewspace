@@ -31,7 +31,7 @@ var InformationBlockAccordion = React.createClass({
       if(this.props.mobile){
         this.props.blocks.forEach(function(block){
         if(block !== lastBlock){
-          rows.push(<InformationBlockAccordionTitle title={block.title});
+          rows.push(<InformationBlockAccordionTitle title={block.title} />);
           rows.push(<InformationBlockAccordion text={block.text}/>);
         }
         lastBlock = block;
