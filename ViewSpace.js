@@ -8,11 +8,18 @@ var InformationBlock = React.createClass({
     }
   });
 
-var InformationBlockAcordion = React.createClass({
+var InformationBlockAccordionTitle = React.createClass({
+  render: function() {
+    return(<h3>{this.props.title}</h3>);
+  }
+});
+
+var InformationBlockAccordion = React.createClass({
   render: function() {
     return(
-      <h3>{this.props.title}</h3>
-      <div><p>{this.props.text}</p></div>
+      <div>
+      <p>{this.props.text}</p>
+      </div>
       );
   }
 });
@@ -24,7 +31,8 @@ var InformationBlockAcordion = React.createClass({
       if(this.props.mobile){
         this.props.blocks.forEach(function(block){
         if(block !== lastBlock){
-          rows.push(<InformationBlockAccordion title={block.title} text={block.text}/>);
+          rows.push(<InformationBlockAccordionTitle title={block.title});
+          rows.push(<InformationBlockAccordion text={block.text}/>);
         }
         lastBlock = block;
         })
