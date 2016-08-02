@@ -8,21 +8,37 @@ var InformationBlock = React.createClass({
     }
   });
 
+var InformationBlockAcordion = React.createClass({
+  render: function() {
+    return(
+      <h3>{this.props.title}</h3>
+      <div><p>{this.props.text}</p></div>
+      );
+  }
+});
+
   var InformationContainer = React.createClass({
     render:function(){
       var rows = [];
       var lastBlock = null;
+      if(this.props.mobile){
+        this.props.blocks.forEach(function(block){
+        if(block !== lastBlock){
+          rows.push(<InformationBlockAccordion title={block.title} text={block.text}/>);
+        }
+        lastBlock = block;
+        })
+        return(<div id='accordion'>{rows}</div>);
+      }          
+    else{
       this.props.blocks.forEach(function(block){
         if(block !== lastBlock){
           rows.push(<InformationBlock id={block.id} title={block.title} text={block.text}/>);
         }
         lastBlock = block;
-      }
-      )            
-    if(this.props.mobile)
-      return(<div id='accordion'>{rows}</div>);
-    else
+        })
       return(<div>{rows}</div>);
+    }
     }
   });
 
